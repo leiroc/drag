@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <title>drag</title>
+    <style>
+        * {margin: 0}
+        .test {
+            position: absolute;
+            top: 20px;
+            width: 300px;
+            height: 400px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: #ddd;
+        }
+        .content {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: #000;
+        }
+        #mudi {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="test">
+        <div id="mudi"></div>
+        <div id="drag" class="content"></div>
+    </div>
+
+    <script src="plugins/drag.js"></script>
+    <script>
+        var $mudi = document.querySelector('#mudi'),
+            l = $mudi.offsetLeft,
+            t = $mudi.offsetTop,
+            w = $mudi.offsetWidth,
+            h = $mudi.offsetHeight;
+
+
+        var d = new Drag({
+            dom: '#drag',
+            ondrag: function (obj) {
+                if (obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h) {
+                    $mudi.style.cssText += 'border-color: #f40';
+                    if (obj.type == 'end') {
+                        d.pos({
+                            l: l,
+                            t: t
+                        });
+                    }
+                } else {
+                    $mudi.style.cssText += 'border-color: #000';
+                }
+
+                if (obj.type == 'end' && !(obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h)) {
+                    d.reset();
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
