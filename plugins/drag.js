@@ -17,22 +17,7 @@ function Drag(opts){
 Drag.prototype =  {
     $:function (o,p) {
         return (p||document).querySelector(o);
-    },
-    addClass:function (o,cls) {
-        if (o.classList) {
-            o.classList.add(cls)
-        }else {
-            o.className+=' '+cls;
-        }
-    },
-    removeClass:function (o,cls) {
-        if (o.classList) {
-            o.classList.remove(cls)
-        }else {
-            o.className=o.className.replace(new RegExp('\\s*\\b'+cls+'\\b','g'),'')
-        }
-    },
-    isiPhone: /iPhone|iPod|iPad/.test(navigator.userAgent)
+    }
 };
 
 Drag.prototype.init = function () {
@@ -121,17 +106,11 @@ Drag.prototype.reset = function () {
 
 
 Drag.prototype.pos = function (obj) {
-
     this.offsetX = this.offsetY = 0;
     this.left = obj.l;
     this.top = obj.t;
     this.dom.setAttribute('pos', this.left+'-' + this.top);
     this.dom.style.cssText += '-webkit-transform: translate3d(0,0,0);left: '+ obj.l + 'px; ' + 'top: ' + obj.t + 'px;right:auto;bottom:auto;';
 };
-
-
-
-
-
 
 window.Drag = Drag;

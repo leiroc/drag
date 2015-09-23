@@ -26,16 +26,14 @@
             right: 0;
             margin: auto;
             background-color: #000;
-            z-index: 1000;
         }
         #mudi {
             position: absolute;
             width: 100px;
             height: 100px;
-            border: 1px solid #000000;
+            background-color: #007aff;
             left: 0;
             right: 0;
-            z-index: 999;
             margin: auto;
         }
     </style>
@@ -61,7 +59,7 @@
             dom: '#drag',
             ondrag: function (obj) {
                 if (obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h) {
-                    $mudi.style.cssText += 'border-color: #f40';
+                    $mudi.style.cssText += 'background-color: #f40';
                     if (obj.type == 'end') {
                         d.pos({
                             l: l,
@@ -69,7 +67,7 @@
                         });
                     }
                 } else {
-                    $mudi.style.cssText += 'border-color: #000';
+                    $mudi.style.cssText += 'background-color: #007aff';
                 }
 
                 if (obj.type == 'end' && !(obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h)) {
