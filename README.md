@@ -1,6 +1,50 @@
 # DRAG
 >drag 是一款移动端，简单拖拽插件
 
+##examplae
+>css
+
+
+	.drag {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 200px;
+        line-height: 50px;
+        font-size: 1rem;
+        color: #fff;
+        left: 0;
+        text-align: center;
+        background-color: #000;
+    }
+    .target {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #007aff;
+        left: 0;
+        line-height: 50px;
+        font-size: 1rem;
+        color: #fff;
+        text-align: center;
+    }
+
+>html
+
+
+	<div id="drag1" style="left: 10px;" class="drag">drag_1</div>
+    <div id="tag1" style="left: 10px" class="target">tag_1</div>
+
+>js
+
+    
+	new Drag({
+	    dragEle: "#drag1",
+	    targetEle: "#tag1",
+	    ondrag: function (obj) {
+			    
+	    }
+	});
 
 
 ##演示地址

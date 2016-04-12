@@ -17,24 +17,28 @@
             margin: auto;
             background-color: #ddd;
         }
-        .content {
+        .drag {
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             top: 200px;
+            line-height: 50px;
+            font-size: 1rem;
+            color: #fff;
             left: 0;
-            right: 0;
-            margin: auto;
+            text-align: center;
             background-color: #000;
         }
-        #mudi {
+        .target {
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             background-color: #007aff;
             left: 0;
-            right: 0;
-            margin: auto;
+            line-height: 50px;
+            font-size: 1rem;
+            color: #fff;
+            text-align: center;
         }
     </style>
 </head>
@@ -42,37 +46,40 @@
 
 
     <div class="test">
-        <div id="mudi"></div>
-        <div id="drag" class="content"></div>
+        <div id="tag1" style="left: 10px" class="target">tag_1</div>
+        <div id="tag2" style="left: 70px; top: 300px;" class="target">tag_2</div>
+        <div id="tag3" style="left: 200px; top: 300px;" class="target">tag_3</div>
+
+        <div id="drag1" style="left: 10px;" class="drag">drag_1</div>
+        <div id="drag2" style="left: 70px;" class="drag">drag_2</div>
+        <div id="drag3" style="left: 130px;" class="drag">drag_3</div>
+
     </div>
 
     <script src="plugins/drag.js"></script>
     <script>
-        var $mudi = document.querySelector('#mudi'),
-            l = $mudi.offsetLeft,
-            t = $mudi.offsetTop,
-            w = $mudi.offsetWidth,
-            h = $mudi.offsetHeight;
 
-
-        var d = new Drag({
-            dom: '#drag',
+        new Drag({
+            dragEle: '#drag1',
+            targetEle: '#tag1',
             ondrag: function (obj) {
-                if (obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h) {
-                    $mudi.style.cssText += 'background-color: #f40';
-                    if (obj.type == 'end') {
-                        d.pos({
-                            l: l,
-                            t: t
-                        });
-                    }
-                } else {
-                    $mudi.style.cssText += 'background-color: #007aff';
-                }
 
-                if (obj.type == 'end' && !(obj.left > l && obj.left < l + w && obj.top > t && obj.top < t + h)) {
-                    d.reset();
-                }
+            }
+        });
+
+        new Drag({
+            dragEle: '#drag2',
+            targetEle: '#tag2',
+            ondrag: function (obj) {
+
+            }
+        });
+
+        new Drag({
+            dragEle: '#drag3',
+            targetEle: '#tag3',
+            ondrag: function (obj) {
+
             }
         });
 
