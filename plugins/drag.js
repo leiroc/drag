@@ -125,12 +125,12 @@ Drag.prototype.reset = function () {
 Drag.prototype.checkHit = function (obj) {
     var self = this;
 
-    if (obj.left > self.targetLeft && obj.left < self.targetLeft + self.targetWidth &&
-        ((obj.top > self.targetTop && obj.top < self.targetTop + self.targetHeight)||(obj.top + self.height > self.targetTop &&
-        obj.top + self.height < self.targetTop + self.targetHeight)) ||
-        (obj.left + self.width < self.targetLeft + self.targetWidth && obj.left + self.width > self.targetLeft &&
-        ((obj.top > self.targetTop && obj.top < self.targetTop + self.targetHeight)||(obj.top + self.height > self.targetTop &&
-        obj.top + self.height < self.targetTop + self.targetHeight)))) {
+    if (obj.left >= self.targetLeft && obj.left <= self.targetLeft + self.targetWidth &&
+        ((obj.top >= self.targetTop && obj.top <= self.targetTop + self.targetHeight)||(obj.top + self.height >= self.targetTop &&
+        obj.top + self.height <= self.targetTop + self.targetHeight)) ||
+        (obj.left + self.width <= self.targetLeft + self.targetWidth && obj.left + self.width >= self.targetLeft &&
+        ((obj.top >= self.targetTop && obj.top <= self.targetTop + self.targetHeight)||(obj.top + self.height >= self.targetTop &&
+        obj.top + self.height <= self.targetTop + self.targetHeight)))) {
 
         self.targetEle.style.cssText += 'background-color: #f40';
         obj.isHit = true;
