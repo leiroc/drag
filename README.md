@@ -1,3 +1,12 @@
+# 电影资源（nodejs爬虫实践）
+
+关注 “乐派电影” 微信公众号，获取更多高清电影资源。
+
+![](https://raw.githubusercontent.com/leiroc/wipe/master/lp.jpg)
+
+
+
+
 #Bug and News
 >2016-04-12 BEFORE
 
